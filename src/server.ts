@@ -3,8 +3,16 @@ import mongoose from "mongoose";
 import multer from "multer";
 import { MONGODB_URI, PORT } from "./config/config";
 import Router from "./routes/route";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors(
+  {
+    origin: "http://localhost:3000/",
+    credentials: true,
+  }
+));
 
 app.use(express.json());
 
