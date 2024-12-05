@@ -5,10 +5,15 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && npm install -g typescript
 
-COPY ./dist /usr/src/app/dist
 
+
+COPY ./src /usr/src/app/src
+
+COPY tsconfig.json /usr/src/app
+
+RUN tsc
 
 
 CMD [ "node", "--watch"  ,"./dist/server.js" ]
