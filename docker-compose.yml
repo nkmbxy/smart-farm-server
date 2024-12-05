@@ -6,5 +6,12 @@ services:
     build: .
     environment:
       - PORT=${PORT}
+      - MONGODB_URI=${MONGODB_URI}
+      - DB_NAME=${DB_NAME}
+      - USER_DB=${USER_DB}
+      - PASS_DB=${PASS_DB}
+      - predictURL=${predictURL}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
     ports:
       - ${PORT}:${PORT}
