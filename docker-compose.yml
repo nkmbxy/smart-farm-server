@@ -1,0 +1,10 @@
+version: "3.1"
+
+services:
+  server:
+    container_name: server
+    build: .
+    environment:
+      - PORT=${PORT}
+    ports:
+      - ${PORT}:${PORT}

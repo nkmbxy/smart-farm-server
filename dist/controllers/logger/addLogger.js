@@ -16,6 +16,7 @@ exports.addLogger = void 0;
 const model_1 = require("../../models/model");
 const uploadImage_1 = require("../../utils/uploadImage");
 const axios_1 = __importDefault(require("axios"));
+const config_1 = require("../../config/config");
 const addLogger = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const file = req.file;
@@ -24,7 +25,7 @@ const addLogger = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         // }
         const imageUrl = yield (0, uploadImage_1.uploadImage)(req.file);
         const predictImage = yield axios_1.default
-            .post("http://127.0.0.1:8000/predict", { imageArr: [imageUrl] })
+            .post(config_1.predictURL, { imageArr: [imageUrl] })
             .then((response) => {
             return response.data;
         }).catch((error) => { console.log(error); });

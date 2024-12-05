@@ -12,6 +12,7 @@ import {
 } from "../../models/model";
 import { uploadImage } from "../../utils/uploadImage";
 import axios from "axios";
+import {predictURL} from '../../config/config'
 
 export const addLogger = async (req: Request, res: Response) => {
   try {
@@ -22,7 +23,7 @@ export const addLogger = async (req: Request, res: Response) => {
     const imageUrl = await uploadImage(req.file);
 
     const predictImage = await axios
-      .post("http://127.0.0.1:8000/predict", { imageArr: [imageUrl] })
+      .post(predictURL, { imageArr: [imageUrl] })
       .then((response) => {
         return response.data;
       }).catch((error) => {console.log(error)});
