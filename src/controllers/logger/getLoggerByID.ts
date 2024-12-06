@@ -11,7 +11,7 @@ export const getLoggerByID = async (req: Request, res: Response) => {
     .populate("nitrogen_id")
     .populate("phosphorus_id")
     .populate("potassium_id")
-    .populate("diseasePredict_id")
+    .populate({path:"diseasePredict_id", populate: "disease_id"}).exec();
     if (!Logger) {
       res.status(404).json({ message: "Logger not found." });
       return;
